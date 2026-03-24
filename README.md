@@ -1,34 +1,116 @@
-﻿# DAO-Based Ride Sharing Prototype
+# DAO-Based Ride Sharing Application
 
-This folder contains a self-contained web prototype based on the SRS in `SRS DAO Based Taxi App Ram Sundar 23BCE1939.pdf`.
+A repository for a role-based web prototype of a DAO-inspired ride sharing platform.
 
-## What is implemented
+## Overview
 
-- Role-based login with separate landing pages for passenger, host, arbitrator, and admin users
-- Basic role based access control in the UI: each login only sees its allowed page set
-- Passenger ride request flow with fare and time estimation
-- Host request review and ride progression
-- Arbitrator dispute resolution queue
-- Admin verification and DAO rule configuration panels
-- DAO-style reputation breakdown and event history
+This project demonstrates a ride sharing system with:
 
-## Run it
+- Passenger ride booking and tracking
+- Host ride acceptance and trip handling
+- Arbitrator dispute review
+- Admin verification and rule management
+- Basic role-based access control at login
+- DAO-style reputation visibility and governance summaries
+
+The application is intentionally lightweight and runs without external packages or build tools.
+
+## Features
+
+- Separate login entry for each demo user
+- Role-specific landing pages for:
+  - Passenger
+  - Host
+  - Arbitrator
+  - Admin
+- Restricted navigation based on the logged-in user's role
+- Ride request flow with fare and time estimation
+- Host-side request handling and ride progression
+- Post-ride feedback and dispute filing
+- Arbitrator decision workflow
+- Admin review of host verification and platform constants
+- Reputation history and DAO overview screens
+
+## Tech Stack
+
+- HTML
+- CSS
+- Vanilla JavaScript
+- Node.js HTTP server
+- `localStorage` for demo persistence
+
+## Project Structure
+
+```text
+.
+|-- public/
+|   |-- app.js
+|   |-- index.html
+|   `-- styles.css
+|-- server.js
+`-- README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ recommended
+
+### Run Locally
 
 ```powershell
 node server.js
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+Then open:
 
-## Files
+```text
+http://localhost:3000
+```
 
-- `server.js` - minimal Node static file server
-- `public/index.html` - app shell
-- `public/styles.css` - UI styling
-- `public/app.js` - role-based prototype logic and seeded data
+If port `3000` is already in use:
 
-## Notes
+```powershell
+$env:PORT=3001
+node server.js
+```
 
-- This is a front-end prototype with local browser persistence using `localStorage`.
-- Blockchain, Colony DAO, GPS, payments, KYC, and notifications are simulated in UI logic.
-- To reset demo data, clear the browser's local storage for this app.
+## Demo Access
+
+The login screen includes seeded users for each role:
+
+- Passenger
+- Host
+- Arbitrator
+- Admin
+
+Each user is redirected to the correct dashboard after login, and only allowed pages are shown in navigation.
+
+## RBAC Behavior
+
+This project demonstrates basic front-end role-based access control:
+
+- Passengers can access passenger pages, DAO overview, and profile
+- Hosts can access host pages, DAO overview, and profile
+- Arbitrators can access arbitration pages, DAO overview, and profile
+- Admins can access admin pages, DAO overview, and profile
+
+This is UI-level RBAC for demonstration purposes, not production-grade authorization.
+
+## Data and Persistence
+
+- App state is stored in the browser using `localStorage`
+- Seeded users, rides, disputes, and reputation records are loaded automatically
+- To reset the demo, clear browser storage for the app
+
+## Limitations
+
+- No real authentication backend
+- No database
+- No real blockchain, DAO, GPS, payments, KYC, or notification integrations
+- Reputation, arbitration, and governance are simulated for demonstration
+
+## Purpose
+
+This repository is intended to showcase the functional flows from the SRS and demonstrate how role-based access control can be represented in a simple prototype.
