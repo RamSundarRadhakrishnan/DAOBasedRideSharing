@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DAO Ride Sharing Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-card">
+          <p class="eyebrow">DAO-Based Ride Sharing</p>
+          <h1>Community-safe mobility, modeled from the SRS</h1>
+          <p class="muted">
+            A self-contained prototype for onboarding, matching, reputation,
+            disputes, arbitration, and admin oversight.
+          </p>
+        </div>
+
+        <div class="panel">
+          <p class="panel-title">Navigation</p>
+          <nav id="nav" class="nav-stack"></nav>
+        </div>
+
+        <div class="panel">
+          <p class="panel-title">Current User</p>
+          <div id="user-summary"></div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Prototype Control Center</p>
+            <h2 id="view-title">Passenger Experience</h2>
+          </div>
+          <div class="status-chip">
+            <span class="status-dot"></span>
+            Local demo state saved in your browser
+          </div>
+        </header>
+
+        <section id="hero-stats" class="hero-stats"></section>
+        <section id="view-root" class="view-root"></section>
+      </main>
+    </div>
+
+    <template id="empty-state-template">
+      <div class="empty-state">
+        <h3>Nothing here yet</h3>
+        <p class="muted">Try another role or create your first ride request.</p>
+      </div>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
