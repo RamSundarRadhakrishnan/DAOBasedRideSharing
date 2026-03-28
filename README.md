@@ -1,63 +1,116 @@
-# DAO-Based Ride Sharing Application
+# Lattice
 
-A repository for a role-based web prototype of a DAO-inspired ride sharing platform.
+Lattice is a role-based web prototype for a DAO-governed ride sharing system. It demonstrates how riders, hosts, arbitrators, and admins can interact inside a shared mobility platform with reputation scoring, dispute handling, and governance voting.
 
-## Overview
+The app runs as a lightweight static front end served by a small Node.js HTTP server. There are no external packages, no build step, and no database.
 
-This project demonstrates a ride sharing system with:
+## Current Prototype Scope
 
-- Passenger ride booking and tracking
-- Host ride acceptance and trip handling
-- Arbitrator dispute review
-- Admin verification and rule management
-- Basic role-based access control at login
-- DAO-style reputation visibility and governance summaries
+The current application includes:
 
-The application is intentionally lightweight and runs without external packages or build tools.
+- A branded login and landing page for Lattice
+- Credential-based login that opens the correct workspace in a new tab
+- Separate rider, host, arbitrator, and admin workspaces
+- Shared browser state using `localStorage`
+- Reputation tracking across passenger, host, and arbitration domains
+- Ride request creation, host matching, ride progression, and post-ride feedback
+- Dispute filing, review, reassignment, and resolution
+- DAO governance proposals created by admin
+- Governance voting by riders, hosts, and arbitrators
+- Governance stake penalties for users on the losing side of a resolved proposal
+- Admin controls for verification, rule constants, dispute oversight, and proposal resolution
 
-## Features
+## Demo Workspaces
 
-- Separate login entry for each demo user
-- Role-specific landing pages for:
-  - Passenger
-  - Host
-  - Arbitrator
-  - Admin
-- Restricted navigation based on the logged-in user's role
-- Ride request flow with fare and time estimation
-- Host-side request handling and ride progression
-- Post-ride feedback and dispute filing
-- Arbitrator decision workflow
-- Admin review of host verification and platform constants
-- Reputation history and DAO overview screens
+### Rider
 
-## Tech Stack
+- Create ride requests
+- View ranked host matches
+- Track ride lifecycle stages
+- Submit post-ride feedback
+- File disputes
+- Vote on open DAO proposals
+- View reputation history and governance decisions
 
-- HTML
-- CSS
-- Vanilla JavaScript
-- Node.js HTTP server
-- `localStorage` for demo persistence
+### Host
 
-## Project Structure
+- Review incoming ride requests
+- Accept or decline requests
+- Advance assigned rides through the ride lifecycle
+- Rate passengers after ride completion
+- File disputes on completed rides
+- View host reputation and performance summary
+- Vote on open DAO proposals
 
-```text
-.
-|-- public/
-|   |-- app.js
-|   |-- index.html
-|   `-- styles.css
-|-- server.js
-`-- README.md
-```
+### Arbitrator
 
-## Getting Started
+- Review assigned disputes
+- Move disputes to review
+- Resolve disputes with verdicts
+- Earn arbitration reputation through dispute resolution
+- Vote on open DAO proposals
+
+### Admin
+
+- Review and update host verification status
+- Update DAO rule constants
+- Reassign or resolve disputes
+- Publish governance proposals
+- Resolve governance proposals
+- Review governance history and audit logs
+
+## Governance Flow
+
+The governance system is now an active part of the demo:
+
+- Admin can publish a governance proposal with a title, summary, and vote stake
+- Riders vote using passenger reputation
+- Hosts vote using host reputation
+- Arbitrators vote using arbitration reputation
+- A user can vote once per proposal
+- Proposals resolve through admin action
+- The losing side of a resolved proposal loses the staked reputation amount
+
+Example:
+
+- If a proposal passes, users who voted `against` lose their governance stake
+- If a proposal fails, users who voted `for` lose their governance stake
+
+Resolved proposals are copied into governance history along with vote totals and penalty counts.
+
+## Dispute Flow
+
+The dispute system includes:
+
+- Dispute filing by riders and hosts
+- Arbitrator assignment and reassignment
+- Admin oversight
+- Status progression:
+  - `submitted`
+  - `under_review`
+  - `resolved`
+- Reputation adjustments after verdicts
+- Audit logging for moderation activity
+
+## Demo Credentials
+
+Use these credentials from the login page:
+
+- `ram` / `rider123`
+- `asha` / `host123`
+- `farhan` / `host234`
+- `meera` / `host345`
+- `kavya` / `host456`
+- `ishan` / `arb123`
+- `admin` / `admin123`
+
+## Run Locally
 
 ### Prerequisites
 
 - Node.js 18+ recommended
 
-### Run Locally
+### Start the server
 
 ```powershell
 node server.js
@@ -76,41 +129,66 @@ $env:PORT=3001
 node server.js
 ```
 
-## Demo Access
+## Project Structure
 
-The login screen includes seeded users for each role:
+```text
+.
+|-- public/
+|   |-- admin.html
+|   |-- arbitrator.html
+|   |-- host.html
+|   |-- index.html
+|   |-- login.js
+|   |-- rider.html
+|   |-- service-app.js
+|   |-- styles.css
+|   `-- app.js
+|-- server.js
+`-- README.md
+```
 
-- Passenger
-- Host
-- Arbitrator
-- Admin
+Notes:
 
-Each user is redirected to the correct dashboard after login, and only allowed pages are shown in navigation.
+- `public/service-app.js` is the main shared application script used by the active workspaces
+- `public/login.js` handles credential-based workspace launch
+- `public/app.js` is an older prototype file and is not the main entry path for the current UI
 
-## RBAC Behavior
+## Persistence
 
-This project demonstrates basic front-end role-based access control:
+- The prototype uses browser `localStorage` to persist demo state
+- Multiple open tabs stay in sync through shared browser storage and `BroadcastChannel`
+- To reset the app state, clear browser storage for the app and reload
 
-- Passengers can access passenger pages, DAO overview, and profile
-- Hosts can access host pages, DAO overview, and profile
-- Arbitrators can access arbitration pages, DAO overview, and profile
-- Admins can access admin pages, DAO overview, and profile
+The current storage key is versioned in the front end so major demo changes can reseed fresh data when needed.
 
-This is UI-level RBAC for demonstration purposes, not production-grade authorization.
+## Tech Stack
 
-## Data and Persistence
-
-- App state is stored in the browser using `localStorage`
-- Seeded users, rides, disputes, and reputation records are loaded automatically
-- To reset the demo, clear browser storage for the app
+- HTML
+- CSS
+- Vanilla JavaScript
+- Node.js HTTP server
+- Browser `localStorage`
+- Browser `BroadcastChannel`
 
 ## Limitations
 
-- No real authentication backend
-- No database
-- No real blockchain, DAO, GPS, payments, KYC, or notification integrations
-- Reputation, arbitration, and governance are simulated for demonstration
+This is still a demo prototype. It does not include:
+
+- Real authentication or authorization back end
+- Real blockchain or Colony integration
+- Real GPS or oracle integrations
+- Real payments or fiat settlement rails
+- Real KYC provider integration
+- Real-time backend persistence across devices
+
+Reputation, disputes, governance voting, and staking logic are simulated in the browser for demonstration purposes.
 
 ## Purpose
 
-This repository is intended to showcase the functional flows from the SRS and demonstrate how role-based access control can be represented in a simple prototype.
+This repository is intended to demonstrate a DAO-style ride sharing concept in a working browser prototype. It is especially suited for showcasing:
+
+- Role-based workflows
+- Reputation-based matching
+- DAO-inspired moderation
+- Governance proposals and voting
+- Stake-based penalties tied to proposal outcomes
