@@ -1,4 +1,7 @@
-﻿:root {
+@import url("https://fonts.cdnfonts.com/css/geist-mono");
+@import url("https://fonts.cdnfonts.com/css/mona-sans");
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap");
+:root {
   --bg: #0f1217;
   --bg-elevated: #171b22;
   --panel: rgba(24, 29, 37, 0.92);
@@ -17,6 +20,9 @@
   --radius-lg: 26px;
   --radius-md: 18px;
   --radius-sm: 12px;
+  --font-body: "Mona-Sans", "Mona Sans", sans-serif;
+  --font-title: "Clash Display", sans-serif;
+  --font-hero: "Geist Mono", monospace;
 }
 
 * {
@@ -27,7 +33,8 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  font-family: Bahnschrift, "Segoe UI", "Trebuchet MS", sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.45;
   color: var(--ink);
   background:
     linear-gradient(135deg, rgba(255, 143, 63, 0.08), transparent 22%),
@@ -70,7 +77,7 @@ button,
 button {
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.8rem 1.1rem;
+  padding: 0.9rem 1.25rem;
   background: linear-gradient(135deg, #ff8f3f, #ff6b3d);
   color: white;
   cursor: pointer;
@@ -110,7 +117,7 @@ textarea {
   border-radius: var(--radius-sm);
   border: 1px solid var(--line-strong);
   background: rgba(9, 12, 16, 0.75);
-  padding: 0.85rem 0.95rem;
+  padding: 0.95rem 1rem;
 }
 
 textarea {
@@ -154,8 +161,9 @@ textarea {
 .app-shell {
   display: grid;
   grid-template-columns: 320px 1fr;
-  gap: 1.3rem;
-  padding: 1.4rem;
+  gap: 1.5rem;
+  padding: 1.6rem;
+  align-items: start;
 }
 
 .sidebar,
@@ -163,10 +171,16 @@ textarea {
   min-width: 0;
 }
 
+.main-content {
+  display: grid;
+  gap: 1.15rem;
+  align-content: start;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .panel,
@@ -186,7 +200,13 @@ textarea {
 .content-card,
 .hero-card,
 .service-card {
-  padding: 1.1rem;
+  padding: 1.45rem;
+}
+
+.hero-card,
+.content-card,
+.panel {
+  align-self: start;
 }
 
 .industrial-glow {
@@ -197,10 +217,10 @@ textarea {
 .eyebrow {
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  font-size: 0.76rem;
   color: var(--accent);
-  font-family: Consolas, "Courier New", monospace;
+  font-family: var(--font-hero);
 }
 
 h1,
@@ -211,6 +231,29 @@ p {
   margin-top: 0;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+.brand-mark {
+  font-family: var(--font-hero);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.hero-card .eyebrow,
+.hero-card h3,
+.status-chip {
+  font-family: var(--font-hero);
+}
+
 .muted {
   color: var(--muted);
 }
@@ -219,13 +262,13 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 1.15rem;
+  margin-bottom: 0.1rem;
 }
 
 .topbar h2 {
-  margin-bottom: 0;
-  font-size: 2rem;
+  margin-bottom: 0.15rem;
+  font-size: 2.15rem;
 }
 
 .status-chip,
@@ -233,10 +276,10 @@ p {
 .kpi-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.65rem;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  padding: 0.6rem 0.85rem;
+  padding: 0.72rem 1rem;
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -254,7 +297,8 @@ p {
 .grid-three,
 .form-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
+  align-items: start;
 }
 
 .hero-stats,
@@ -271,7 +315,7 @@ p {
 .stack,
 .list {
   display: grid;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .card-header,
@@ -279,36 +323,39 @@ p {
 .inline-actions {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 1.1rem;
   flex-wrap: wrap;
 }
 
 .form-field {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.5rem;
 }
 
 .form-field label,
 .panel-title {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--steel);
 }
 
 .panel-title {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.95rem;
 }
 
 .nav-stack,
 .timeline {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.8rem;
 }
 
 .nav-button {
   width: 100%;
+  min-height: 0;
+  padding: 1rem 1.15rem;
   text-align: left;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid transparent;
@@ -322,13 +369,13 @@ p {
 .list-item {
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
-  padding: 0.95rem;
+  padding: 1.1rem;
   background: rgba(255, 255, 255, 0.03);
 }
 
 .notice {
   border-left: 4px solid var(--accent);
-  padding: 0.95rem 1rem;
+  padding: 1.05rem 1.15rem;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   background: var(--accent-soft);
 }
@@ -340,7 +387,7 @@ p {
 .timeline-step {
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  padding: 0.65rem 0.75rem;
+  padding: 0.78rem 0.9rem;
   text-align: center;
   color: var(--muted);
   background: rgba(255, 255, 255, 0.03);
@@ -398,3 +445,213 @@ p {
     flex-direction: column;
   }
 }
+
+.login-body {
+  display: block;
+  padding: 2rem;
+  overflow-x: hidden;
+}
+
+.login-body::after {
+  content: "";
+  position: fixed;
+  width: min(42rem, 80vw);
+  aspect-ratio: 1;
+  top: -12rem;
+  right: -10rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 143, 63, 0.24), rgba(255, 143, 63, 0.02) 62%, transparent 72%);
+  filter: blur(18px);
+  animation: login-float 16s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.login-shell {
+  width: min(1360px, 100%);
+  margin: 0 auto;
+}
+
+.login-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(340px, 420px);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.login-story {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.login-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.login-hero,
+.login-access,
+.login-section-card {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.login-hero {
+  padding: clamp(1.9rem, 4vw, 2.9rem);
+}
+
+.login-copy-block {
+  gap: 1rem;
+}
+
+.login-hero-title {
+  max-width: 11ch;
+  margin-bottom: 0;
+  font-size: clamp(3.4rem, 7vw, 5.6rem);
+  font-weight: 700;
+  line-height: 0.96;
+}
+
+.login-hero-quote {
+  margin: 0;
+  padding-left: 1.2rem;
+  border-left: 3px solid rgba(255, 143, 63, 0.4);
+  color: var(--ink);
+  line-height: 1.75;
+}
+
+.login-section-title {
+  margin-bottom: 0;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+}
+
+.login-copy {
+  margin-bottom: 0;
+  line-height: 1.72;
+}
+
+.login-protocol-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.login-protocol-list li {
+  padding-left: 0.3rem;
+  line-height: 1.72;
+}
+
+.login-feed {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.login-feed-dense {
+  gap: 0.75rem;
+}
+
+.login-tech-line {
+  display: block;
+  font-family: var(--font-hero);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  white-space: normal;
+  color: var(--ink);
+}
+
+.login-access {
+  position: sticky;
+  top: 2rem;
+  padding: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.login-access-title {
+  margin-bottom: 0.35rem;
+  font-size: clamp(2.15rem, 5vw, 3rem);
+}
+
+.login-form {
+  gap: 1rem;
+}
+
+.login-form button {
+  width: 100%;
+}
+
+.login-feedback {
+  min-height: 1.25rem;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.login-feedback[data-state="error"] {
+  color: var(--danger);
+}
+
+.login-feedback[data-state="success"] {
+  color: var(--success);
+}
+
+.login-footer {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 1100px) {
+  .login-body {
+    padding: 1.3rem;
+  }
+
+  .login-layout,
+  .login-grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .login-access {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .login-body {
+    padding: 1rem;
+  }
+
+  .login-shell {
+    width: 100%;
+  }
+
+  .login-hero,
+  .login-access,
+  .login-section-card {
+    gap: 1rem;
+  }
+
+  .login-hero-title {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .login-section-title {
+    font-size: clamp(1.7rem, 8vw, 2.4rem);
+  }
+}
+
+@keyframes login-float {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-42px, 34px, 0) scale(1.08);
+  }
+}
+
+
+
+

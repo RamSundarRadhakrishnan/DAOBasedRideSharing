@@ -34,7 +34,8 @@ function sendFile(filePath, response) {
 }
 
 const server = http.createServer((request, response) => {
-  const requestPath = request.url === "/" ? "/index.html" : request.url;
+  const parsedUrl = new URL(request.url || "/", `http://${request.headers.host || "localhost"}`);
+  const requestPath = parsedUrl.pathname === "/" ? "/index.html" : parsedUrl.pathname;
   const safePath = path.normalize(requestPath).replace(/^(\.\.[/\\])+/, "");
   const filePath = path.join(PUBLIC_DIR, safePath);
 
@@ -48,5 +49,7 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`DAO Ride Sharing prototype running at http://localhost:${PORT}`);
+  console.log(`Lattice prototype running at http://localhost:${PORT}`);
 });
+
+

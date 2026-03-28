@@ -1,41 +1,111 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DAO Ride Sharing</title>
+    <title>Lattice | Sign In</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body class="launcher-body">
-    <main class="launcher-shell">
-      <section class="launcher-hero panel industrial-glow">
-        <p class="eyebrow">DAO Ride Sharing Network</p>
-        <h1>Connected workspaces for riders, hosts, and operations</h1>
-        <p class="muted hero-copy">
-          Open each workspace in a separate tab to run the trip lifecycle end to end.
-          All three surfaces stay synchronized through the shared application state.
+  <body class="login-body">
+    <main class="login-shell login-layout">
+      <section class="login-story">
+        <section class="login-hero panel industrial-glow">
+          <div class="stack login-copy-block">
+            <p class="eyebrow">Hero Section</p>
+            <p class="eyebrow brand-mark">Lattice</p>
+          </div>
+          <div class="stack login-copy-block">
+            <h1 class="login-hero-title">THE ROAD IS A SHARED RESOURCE.</h1>
+            <blockquote class="login-hero-quote">
+              Movement shouldn't be governed by a corporation. Lattice is a decentralized mobility protocol built on <strong>Colony</strong>.
+              We've replaced the middleman with a transparent reputation engine.
+            </blockquote>
+          </div>
+          <div class="login-feed">
+            <code class="login-tech-line">[ INITIATE_SESSION ]</code>
+            <code class="login-tech-line">NETWORK_STATUS: OPERATIONAL // L2_LATENCY: 12ms</code>
+          </div>
+        </section>
+
+        <section class="login-grid-two">
+          <article class="panel login-section-card">
+            <p class="eyebrow">The Core Protocol</p>
+            <h2 class="login-section-title">PROFIT, REDISTRIBUTED.</h2>
+            <ul class="login-protocol-list">
+              <li><strong>Zero Platform Hegemony:</strong> By removing central authority, we prevent "shifting goalposts" and ensure the community sets the standards.</li>
+              <li><strong>Fiat-Settled, DAO-Governed:</strong> We use fiat for daily payments to keep things simple, while the Colony DAO manages the underlying trust.</li>
+              <li><strong>Reputation as Equity:</strong> Your "Reputation" tokens represent your influence. They are earned through safe behavior, cannot be traded, and decay over time to ensure only active, high-quality contributors lead the grid.</li>
+            </ul>
+          </article>
+
+          <article class="panel login-section-card">
+            <p class="eyebrow">The Dashboard</p>
+            <h2 class="login-section-title">LIVE BROWSER STATE.</h2>
+            <div class="login-feed login-feed-dense">
+              <code class="login-tech-line"><strong>[ USER_PROFILE: VALIDATED ]</strong></code>
+              <code class="login-tech-line"><strong>ROLE:</strong> HOST_NODE_01</code>
+              <code class="login-tech-line"><strong>REPUTATION_SCORE:</strong> 842.10</code>
+              <code class="login-tech-line"><strong>STAKED_FOR_RIDE:</strong> 5.00_REP</code>
+              <code class="login-tech-line"><strong>DOMAIN_INFLUENCE:</strong> DISPUTE_RESOLUTION_LVL_2</code>
+            </div>
+          </article>
+        </section>
+
+        <section class="login-grid-two">
+          <article class="panel login-section-card">
+            <p class="eyebrow">The Safety Manifesto</p>
+            <h2 class="login-section-title">BUILT ON TRUST, VERIFIED BY CODE.</h2>
+            <ul class="login-protocol-list">
+              <li><strong>Democratic Justice:</strong> Disputes aren't handled by black-box AI. They are resolved by high-reputation human arbitrators within the DAO.</li>
+              <li><strong>Real-Time Verification:</strong> Every mile is tracked via GPS and hardware oracles to ensure the "source of truth" is never in question.</li>
+              <li><strong>Safety First:</strong> Integrated SOS features and identity verification (KYC) ensure every Node in the Lattice is a verified member of the community.</li>
+            </ul>
+          </article>
+
+          <article class="panel login-section-card industrial-glow">
+            <p class="eyebrow">Footer / Call to Action</p>
+            <h2 class="login-section-title">OWN THE GRID.</h2>
+            <p class="login-copy">
+              Lattice is a "pre-seed" open-source vision. No corporate overhead. No predatory fees. Just a clean, interconnected lattice of people moving together.
+            </p>
+          </article>
+        </section>
+      </section>
+
+      <aside class="login-access panel industrial-glow">
+        <div class="stack login-copy-block">
+          <p class="eyebrow">Initiate Session</p>
+          <div>
+            <h2 class="brand-mark login-access-title">Lattice</h2>
+            <p class="muted login-copy">
+              Sign in with your workspace credentials to open the correct dashboard in a new tab.
+            </p>
+          </div>
+        </div>
+
+        <form id="login-form" class="stack login-form" novalidate>
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" required />
+          </div>
+
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required />
+          </div>
+
+          <p id="login-feedback" class="login-feedback" aria-live="polite"></p>
+
+          <button type="submit">Sign In</button>
+        </form>
+
+        <p class="login-footer muted">
+          Rider, host, arbitrator, and admin workspaces each open in their own browser tab.
         </p>
-      </section>
-
-      <section class="launcher-grid">
-        <a class="service-card panel" href="./rider.html" target="_blank" rel="noopener noreferrer">
-          <p class="eyebrow">Rider App</p>
-          <h2>Book trips, track rides, and raise disputes</h2>
-          <p class="muted">Signed in as Ram Sundar</p>
-        </a>
-
-        <a class="service-card panel" href="./host.html" target="_blank" rel="noopener noreferrer">
-          <p class="eyebrow">Host App</p>
-          <h2>Review requests, accept trips, and update ride progress</h2>
-          <p class="muted">Signed in as Asha Nair</p>
-        </a>
-
-        <a class="service-card panel" href="./admin.html" target="_blank" rel="noopener noreferrer">
-          <p class="eyebrow">Admin Console</p>
-          <h2>Monitor platform activity, disputes, and verification</h2>
-          <p class="muted">Signed in as Operations</p>
-        </a>
-      </section>
+      </aside>
     </main>
+
+    <script src="./login.js"></script>
   </body>
 </html>
+
