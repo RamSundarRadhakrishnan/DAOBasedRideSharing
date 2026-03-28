@@ -6,54 +6,36 @@
     <title>DAO Ride Sharing</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <div class="page-shell">
-      <aside class="sidebar">
-        <div class="brand-card">
-          <p class="eyebrow">DAO-Based Ride Sharing</p>
-          <h1>Community-safe mobility</h1>
-          <p class="muted">
-            Trusted ride sharing with role-aware workflows for riders, hosts, arbitrators, and operations teams.
-          </p>
-        </div>
+  <body class="launcher-body">
+    <main class="launcher-shell">
+      <section class="launcher-hero panel industrial-glow">
+        <p class="eyebrow">DAO Ride Sharing Network</p>
+        <h1>Connected workspaces for riders, hosts, and operations</h1>
+        <p class="muted hero-copy">
+          Open each workspace in a separate tab to run the trip lifecycle end to end.
+          All three surfaces stay synchronized through the shared application state.
+        </p>
+      </section>
 
-        <div class="panel">
-          <p class="panel-title">Navigation</p>
-          <nav id="nav" class="nav-stack"></nav>
-        </div>
+      <section class="launcher-grid">
+        <a class="service-card panel" href="./rider.html" target="_blank" rel="noopener noreferrer">
+          <p class="eyebrow">Rider App</p>
+          <h2>Book trips, track rides, and raise disputes</h2>
+          <p class="muted">Signed in as Ram Sundar</p>
+        </a>
 
-        <div class="panel">
-          <p class="panel-title">Current User</p>
-          <div id="user-summary"></div>
-        </div>
-      </aside>
+        <a class="service-card panel" href="./host.html" target="_blank" rel="noopener noreferrer">
+          <p class="eyebrow">Host App</p>
+          <h2>Review requests, accept trips, and update ride progress</h2>
+          <p class="muted">Signed in as Asha Nair</p>
+        </a>
 
-      <main class="main-content">
-        <header class="topbar">
-          <div>
-            <p class="eyebrow">Live Operations</p>
-            <h2 id="view-title">Sign In</h2>
-          </div>
-          <div class="status-chip">
-            <span class="status-dot"></span>
-            Role-aware access enabled
-          </div>
-        </header>
-
-        <section id="hero-stats" class="hero-stats"></section>
-        <section id="view-root" class="view-root"></section>
-      </main>
-    </div>
-
-    <template id="empty-state-template">
-      <div class="empty-state">
-        <h3>Nothing here yet</h3>
-        <p class="muted">Try another role or create your first ride request.</p>
-      </div>
-    </template>
-
-    <script src="./app.js"></script>
+        <a class="service-card panel" href="./admin.html" target="_blank" rel="noopener noreferrer">
+          <p class="eyebrow">Admin Console</p>
+          <h2>Monitor platform activity, disputes, and verification</h2>
+          <p class="muted">Signed in as Operations</p>
+        </a>
+      </section>
+    </main>
   </body>
 </html>
-
-
